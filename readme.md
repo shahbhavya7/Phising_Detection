@@ -1,4 +1,4 @@
-# SafeWeb
+# 🌍 SafeWeb
 
 SafeWeb is a web application that detects phishing websites and informs users about how safe a URL is.  
 It uses a machine learning model trained on a variety of URL features to classify whether a site is **safe** or **phishing**.

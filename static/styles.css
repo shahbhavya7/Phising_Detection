@@ -1,0 +1,370 @@
+/* Modern CSS Reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Dark Theme Variables */
+:root {
+  --primary: #6c8eff;
+  --primary-dark: #4a6cf7;
+  --secondary: #ff6b9d;
+  --success: #4df0d2;
+  --danger: #ff4d6d;
+  --dark-bg: #0f172a;
+  --dark-surface: #1e293b;
+  --dark-card: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.25);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.35);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --glow: 0 0 10px rgba(108, 142, 255, 0.5);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap');
+
+body {
+  font-family: var(--font-main);
+  line-height: 1.6;
+  color: var(--text-primary);
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  /* Darkened background image with cyber gradient overlay */
+  background: 
+    linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.95) 100%),
+    url('http://127.0.0.1:5000/static/img/hh.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+}
+
+/* Main container with cyber border effect */
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background-color: var(--dark-surface);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(108, 142, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--success), var(--primary));
+  animation: borderGlow 3s infinite;
+}
+
+@keyframes borderGlow {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+/* Layout */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.col-md {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Cyber Typography */
+h1 {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  background: linear-gradient(to right, var(--primary), var(--success));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(108, 142, 255, 0.3);
+  letter-spacing: -0.5px;
+}
+
+h3 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  max-width: 800px;
+}
+
+/* Cyber Form Styles */
+#form1 {
+  background: var(--dark-card);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  border: 1px solid rgba(108, 142, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+#form1:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg), var(--glow);
+  border-color: rgba(108, 142, 255, 0.3);
+}
+
+#form2 {
+  background: var(--dark-card);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgba(108, 142, 255, 0.1);
+}
+
+.form__group {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.form__input {
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  font-size: 1rem;
+  border: 2px solid #334155;
+  border-radius: 8px;
+  transition: var(--transition);
+  background-color: rgba(30, 41, 59, 0.7);
+  font-family: var(--font-main);
+  color: var(--text-primary);
+}
+
+.form__input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background-color: var(--dark-surface);
+  box-shadow: 0 0 0 3px rgba(108, 142, 255, 0.2);
+}
+
+.form__label {
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  padding: 0 5px;
+  background: var(--dark-card);
+  font-size: 0.9rem;
+  color: var(--primary);
+  font-weight: 500;
+  transition: var(--transition);
+  opacity: 0;
+}
+
+.form__input:focus + .form__label,
+.form__input:not(:placeholder-shown) + .form__label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cyber Button Styles */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg), var(--glow);
+}
+
+.button:hover::before {
+  left: 0;
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+/* Result Buttons */
+.button1, .button2 {
+  display: none;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  margin-top: 1rem;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.button1 {
+  background: linear-gradient(135deg, var(--success), #00b4a0);
+  color: var(--dark-bg);
+}
+
+.button2 {
+  background: linear-gradient(135deg, var(--danger), #d00049);
+  color: white;
+}
+
+.button1:hover, .button2:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.button1:active, .button2:active {
+  transform: translateY(0);
+}
+
+/* Cyber Prediction Text */
+#prediction {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(108, 142, 255, 0.1);
+  color: var(--text-primary);
+}
+
+.right {
+  word-break: break-all;
+  background: rgba(30, 41, 59, 0.7);
+  padding: 1rem;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(108, 142, 255, 0.1);
+  color: var(--primary);
+}
+
+.right a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.right a:hover {
+  color: var(--success);
+  text-decoration: underline;
+  text-shadow: 0 0 5px rgba(77, 240, 210, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+  
+  h1 {
+    font-size: 2.2rem;
+  }
+  
+  .container {
+    padding: 1.5rem;
+    margin: 1rem;
+    border-radius: 8px;
+  }
+  
+  #form1, #form2 {
+    padding: 1.5rem;
+  }
+  
+  body {
+    background-attachment: scroll;
+  }
+}
+
+/* Cyber Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#form2 {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Cyberpunk scanline effect */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    rgba(15, 23, 42, 0) 50%, 
+    rgba(0, 255, 255, 0.02) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 100;
+  animation: scanline 6s linear infinite;
+}
+
+@keyframes scanline {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
